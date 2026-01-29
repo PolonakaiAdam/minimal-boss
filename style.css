@@ -1,82 +1,135 @@
+/* RESET + ALAPOK */
 * {
   box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
 
 body {
-  min-height: 15vh;
+  min-height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  /* nagyon visszafogott háttér */
-  background: #f6f7f9;
+  /* KÉK HÁTTÉR */
+  background: radial-gradient(
+    circle at top,
+    #e8f1ff 0%,
+    #cfdfff 40%,
+    #b8ccff 100%
+  );
+  color: #222;
 }
 
+/* ADD BOX */
 .add-box {
   margin-top: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #fff;
-  padding: 12px;
-  border-radius: 12px;
 
-  /* finom, de látható árnyék */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 14px;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
 }
 
+/* INPUT */
 #title {
   flex: 1;
   border: none;
   outline: none;
+
   font-size: 15px;
   padding: 10px 12px;
+  border-radius: 10px;
+
   background: #f1f2f4;
-  border-radius: 8px;
   color: #222;
 
-  /* nagyon enyhe text árnyék */
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 #title::placeholder {
-  color: #888;
+  color: #8a8a8a;
 }
 
+#title:focus {
+  background: #e9ebef;
+  box-shadow: 0 0 0 2px rgba(60, 100, 200, 0.25);
+}
+
+/* ADD BUTTON */
 #add {
   height: 40px;
-  padding: 0 14px;
+  padding: 0 16px;
+
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
 
-  background: #111;
+  background: #1e3a8a; /* kék */
   color: #fff;
 
-  transition: background 0.15s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
 }
 
 #add:hover {
-  background: #000;
+  background: #1e40af;
 }
 
+#add:active {
+  transform: scale(0.96);
+}
+
+/* TODO LIST */
+#todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0 0;
+  width: 100%;
+}
+
+/* EGY TODO ELEM */
 .list {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #fff;
-  padding: 12px;
+
+  background: #ffffff;
+  padding: 12px 14px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
+
+  margin-bottom: 10px;
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
 }
 
-#todo-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.list:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
 }
