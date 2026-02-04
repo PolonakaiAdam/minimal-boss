@@ -35,11 +35,13 @@ async function loadTodos() {
 
     const isDone = Number(todo.completed) === 1;
     const icon = isDone ? '✔' : '✖';
-    
-    li.textContent = `${icon} ${todo.title}`;
+
+    const iconSpan = document.createElement("span")
+    iconSpan.textContent = icon
+    iconSpan.style.cursor = "pointer"
+
     /* Új: módosítás gomb*/ 
     const text = document.createElement('span');
-
     const button = document.createElement('button');
     button.textContent = 'modosítás';
     
@@ -73,18 +75,6 @@ async function loadTodos() {
             loadTodos();
         }
     });
-
-    li.appendChild(text);
-    li.appendChild(button);
-    list.appendChild(li);
-    
-
-});
-
-    const iconSpan = document.createElement("span")
-    iconSpan.textContent = icon
-    iconSpan.style.cursor = "pointer"
-
     iconSpan.addEventListener("click", async () => {
       await fetch("toggle.php", {
         method: "POST",
@@ -100,8 +90,13 @@ async function loadTodos() {
     const titleSpan = document.createElement("span")
     titleSpan.textContent = todo.title
 
+    li.appendChild(text);
+    li.appendChild(button);
     li.appendChild(iconSpan)
     li.appendChild(titleSpan)
-    list.appendChild(li)
-  })
+    list.appendChild(li);
+    
+
+});
+
 }
